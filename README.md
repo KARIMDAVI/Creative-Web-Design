@@ -7,6 +7,12 @@
 
 > **"Pioneering digital experiences that fuse art with technology."**
 
+## 🎯 Live Demo
+
+**[🚀 View Live Demo →](./control-your-design.html)**
+
+---
+
 ---
 
 ## 🚀 Overview
@@ -42,7 +48,7 @@ Designed as a practice in **Creative Coding**, this project combines the utility
 Since this project uses CDNs for all dependencies, there is **no installation required**.
 
 ### Option 1: Direct Open
-Simply double-click `Web-Creative.html` to open it in your default web browser.
+Simply double-click `control-your-design.html` to open it in your default web browser.
 
 ### Option 2: Live Server (Recommended)
 For the best experience (to avoid local CORS policies with some assets), use a local server:
@@ -53,15 +59,16 @@ For the best experience (to avoid local CORS policies with some assets), use a l
     # Run this in your terminal
     python3 -m http.server 8000
     ```
-    Then visit `http://localhost:8000/Web-Creative.html`
+     Then visit `http://localhost:8000/control-your-design.html`
 
 ---
 
 ## 📂 File Structure
 
 ```text
-HTML PRACTICES/
-└── Web-Creative.html  # The main entry point containing HTML, CSS, and JS
+Creative-Web-Design/
+├── control-your-design.html  # The main entry point containing HTML, CSS, and JS
+└── README.md                 # This file
 ```
 
 ---
