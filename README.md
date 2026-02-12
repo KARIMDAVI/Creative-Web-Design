@@ -9,7 +9,7 @@
 
 ## 🎯 Live Demo
 
-**[🚀 View Live Demo →]([./[index.html]()](https://karimdavi.github.io/Creative-Web-Design/))**
+**[🚀 View Live Demo →](https://karimdavi.github.io/Creative-Web-Design/)**
 
 ---
 
