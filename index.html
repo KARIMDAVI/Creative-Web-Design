@@ -11,10 +11,10 @@
     body { font-family: 'Outfit', sans-serif; }
     #mobile-menu { transition: opacity 0.3s ease; }
 
-    /* 3D Card Styles */
+   
     .stats-card {
-      perspective: 1200px; /* Increased perspective for better 3D depth */
-      height: 180px; /* Slightly taller */
+      perspective: 1200px; 
+      height: 180px;
       cursor: pointer;
     }
     
@@ -43,14 +43,13 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      /* Removed backdrop-filter from parent to prevent 3D flattening */
       background-color: rgba(255, 255, 255, 0.05); 
       border: 1px solid rgba(255, 255, 255, 0.1);
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
       transform-style: preserve-3d;
     }
 
-    /* Add blur via pseudo-element to preserve 3D context for children */
+
     .stats-face::before {
       content: '';
       position: absolute;
@@ -63,13 +62,11 @@
     }
     
     .stats-front {
-      /* Front specific styles */
       z-index: 2;
     }
     
     .stats-back {
       transform: rotateY(180deg);
-      /* Move gradient to background */
       background: linear-gradient(135deg, rgba(94, 98, 255, 0.2), rgba(153, 102, 255, 0.2));
       border: 1px solid rgba(94, 98, 255, 0.4);
       z-index: 1;
@@ -80,23 +77,17 @@
       padding: 1.5rem;
       transform-style: preserve-3d;
       z-index: 10;
-      /* Ensure container itself floats slightly off the face */
       transform: translateZ(40px); 
     }
     
-    /* Target immediate children for deep 3D float effect */
     .stats-content > * {
-      transform: translateZ(0px); /* Relative to stats-content */
+      transform: translateZ(0px);
       transition: transform 0.6s cubic-bezier(.16, 1, .3, 1);
       text-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
       will-change: transform;
     }
     
     .stats-card:hover .stats-content > * {
-      /* 
-         Combined float: 40px (container) + 80px (child) = 120px total float.
-         This ensures a massive, visible gap.
-      */
       transform: translateZ(80px); 
       text-shadow: 0 20px 40px rgba(0, 0, 0, 1);
     }
@@ -140,7 +131,7 @@
             Product & Experience Studio
           </div>
           <h1 class="text-5xl md:text-7xl font-bold mb-8 leading-tight">
-            We build <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#5E62FF] to-[#9966FF]">High-end design.</span> that inspire
+            We build <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#5E62FF] to-[#9966FF]">High-end design</span> to inspire
           </h1>
           <p class="text-lg text-gray-400 max-w-2xl mb-10">
             Pioneering digital experiences that fuse art with technology to transform brands and create meaningful connections.
@@ -236,7 +227,7 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1. SETUP THREE.JS SCENE
+
       const scene = new THREE.Scene();
       scene.background = new THREE.Color(0x000000); 
 
@@ -251,13 +242,13 @@
       container.innerHTML = ''; 
       container.appendChild(renderer.domElement);
 
-      // 3. CREATE THE OUTER GLOBE (Wireframe Sphere)
+
       const textureLoader = new THREE.TextureLoader();
       const earthMap = textureLoader.load('https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/earth_specular_2048.jpg');
       
       const geometryOuter = new THREE.SphereGeometry(20, 64, 64);
       
-      // 3a. WIREFRAME MATERIAL (Original)
+     
       const materialWireframe = new THREE.MeshBasicMaterial({ 
         color: 0x5E62FF,
         wireframe: true,
@@ -265,7 +256,7 @@
         opacity: 0.3
       });
 
-      // 3b. DIGITAL LINES MATERIAL (Shader with wireframe)
+
       const materialGlobe = new THREE.ShaderMaterial({
         uniforms: {
           map: { value: earthMap },
@@ -303,7 +294,7 @@
       const outerGlobe = new THREE.Mesh(geometryOuter, materialWireframe);
       scene.add(outerGlobe);
 
-      // 4. CREATE THE INNER OBJECT (The "Specific Shape")
+      
       const geometryInner = new THREE.IcosahedronGeometry(6, 0);
       const materialInner = new THREE.MeshBasicMaterial({ 
         color: 0x9966FF, // Brighter Purple
@@ -312,7 +303,7 @@
       const innerObject = new THREE.Mesh(geometryInner, materialInner);
       scene.add(innerObject);
 
-      // Configuration Object
+      
       const params = {
         waveSpeed: 1.0,
         waveHeight: 3.0,
@@ -342,18 +333,18 @@
         subHeadSpacing: 0 // px
       };
 
-      // GUI Setup
+      
       const gui = new lil.GUI({ title: 'Design Control' });
       
       const folderText = gui.addFolder('Text Styles');
       
-      // Brand
+      
       folderText.addColor(params, 'brandColor').name('Brand Color').onChange(v => {
         const el = document.querySelector('.text-2xl.font-bold');
         if(el) el.style.color = new THREE.Color(v).getStyle();
       });
 
-      // Headline
+      
       folderText.add(params, 'headlineSize', 24, 120).name('Headline Size').onChange(v => {
         const el = document.querySelector('h1');
         if(el) el.style.fontSize = `${v}px`;
@@ -367,7 +358,7 @@
         if(el) el.style.letterSpacing = `${v}px`;
       });
       
-      // Gradient Text
+      
       const updateGradient = () => {
         const c1 = new THREE.Color(params.gradientStart).getStyle();
         const c2 = new THREE.Color(params.gradientEnd).getStyle();
@@ -377,7 +368,7 @@
       folderText.addColor(params, 'gradientStart').name('Gradient Start').onChange(updateGradient);
       folderText.addColor(params, 'gradientEnd').name('Gradient End').onChange(updateGradient);
 
-      // Sub-Headline
+      
       folderText.add(params, 'subHeadSize', 12, 36).name('Subhead Size').onChange(v => {
         const el = document.querySelector('p.text-lg');
         if(el) el.style.fontSize = `${v}px`;
@@ -449,7 +440,7 @@
       gui.addColor(params, 'backgroundColor').name('Background').onChange(v => scene.background.set(v));
 
 
-      // GRID GENERATION
+      
       let geometry, dotsMesh, linesMesh, dotsMaterial, linesMaterial;
 
       function createGrid() {
@@ -467,8 +458,8 @@
         
         const vertices = [];
         const indices = [];
-        const map = new Map(); // "x,y" -> index
-        const edges = new Set(); // "min-max" -> exists
+        const map = new Map();
+        const edges = new Set(); 
 
         const hexW = Math.sqrt(3) * radius;
         const hexH = 2 * radius;
@@ -482,7 +473,7 @@
         const offsetY = -height / 2;
 
         const addVertex = (x, y) => {
-            // Rounding to ensure shared vertices match up
+            
             const key = `${Math.round(x*100)},${Math.round(y*100)}`;
             if (map.has(key)) return map.get(key);
             
@@ -511,7 +502,7 @@
                     currentHexIndices.push(addVertex(vx, vz));
                 }
 
-                // Connect edges
+                
                 for (let i = 0; i < 6; i++) {
                     const idx1 = currentHexIndices[i];
                     const idx2 = currentHexIndices[(i + 1) % 6];
@@ -555,7 +546,7 @@
             const x = positions[i];
             const z = positions[i+2];
             
-            // 3D Wave Function: Combine sine waves for organic "sheet" look
+            
             const y = (Math.sin(x * params.waveFrequency + time) + Math.cos(z * params.waveFrequency + time)) * params.waveHeight;
             
             positions[i+1] = y;
@@ -563,17 +554,17 @@
         
         geometry.attributes.position.needsUpdate = true;
         
-        // Slight rotation for dynamic feel
+        
         scene.rotation.y = Math.sin(time * 0.05) * 0.1;
 
-        // Rotate Outer Globe
+        
         outerGlobe.rotation.y += 0.002;
         outerGlobe.rotation.x += 0.001;
         
-        // Sync Globe Map Rotation
+        
         globeMapMesh.rotation.copy(outerGlobe.rotation);
 
-        // Rotate Inner Object (Faster and opposite direction for effect)
+        
         innerObject.rotation.y -= 0.01;
         innerObject.rotation.x -= 0.005;
 
@@ -587,7 +578,7 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
       });
 
-      // Mobile Menu Logic
+     
       const btn = document.getElementById('menu-btn')
       const menu = document.getElementById('mobile-menu')
       if (btn && menu) btn.addEventListener('click', () => menu.classList.toggle('hidden'))
