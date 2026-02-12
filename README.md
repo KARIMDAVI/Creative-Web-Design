@@ -93,7 +93,7 @@ Feel free to fork this project and experiment with the Three.js settings!
 
 <div align="center">
 
-**Created with ❤️ by Kimo**
+**Created by ☠︎K!MO☠︎**
 
 [Report Bug](https://github.com/) · [Request Feature](https://github.com/)
 
