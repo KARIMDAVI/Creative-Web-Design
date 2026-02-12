@@ -9,7 +9,7 @@
 
 ## 🎯 Live Demo
 
-**[🚀 View Live Demo →](./control-your-design.html)**
+**[🚀 View Live Demo →](./index.html)**
 
 ---
 
