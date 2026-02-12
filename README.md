@@ -95,7 +95,6 @@ Feel free to fork this project and experiment with the Three.js settings!
 
 **Created by ☠︎K!MO☠︎**
 
-[![K!MO](./kimo-signature.svg)](https://github.com/)
 
 [Report Bug](https://github.com/) · [Request Feature](https://github.com/)
 
